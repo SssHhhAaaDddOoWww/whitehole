@@ -1,9 +1,9 @@
 
-import type { Request, Response } from 'express';
 import engine from '../service/engine.js';
 import fs from "fs"
-
-export default async function downloadService(req:Request,res:Response) {
+  import { Router } from 'express';
+  const download = Router();
+  download.post("/download" , async(req,res)=>{
     try { 
         const {url ,type} = req.body;
         if ( !url || !type ){
@@ -27,5 +27,7 @@ export default async function downloadService(req:Request,res:Response) {
     } catch (error) {
         console.log(error);
     } 
-}
- 
+
+  })
+  export default download;
+    
