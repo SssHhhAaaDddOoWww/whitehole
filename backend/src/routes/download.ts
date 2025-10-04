@@ -15,7 +15,11 @@ import fs from "fs"
         
     
         res.download(doc,(err)=>{
+            
             console.log(err);
+        })
+        res.json({
+            message : "file downloaded succesfully !!!!"
         })
           fs.unlink(doc, (unlinkErr) => {
                 if (unlinkErr) {

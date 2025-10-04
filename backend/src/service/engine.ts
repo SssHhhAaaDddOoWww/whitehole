@@ -1,5 +1,8 @@
 import { exec } from "child_process";
 import path from "path";
+
+
+
  enum Type  { 
     Audio  ="audio",
     Video  =  "video"
@@ -7,11 +10,13 @@ import path from "path";
 
 export default  function engine(url:string,type:Type){
 
-            const filePath = path.join(__dirname, "../../downloads", `${Date.now()}.%(ext)s`);
+    const filePath = path.join("downloads", `${Date.now()}.%(ext)s`);
 
     try {
-         const command  =  type == "audio" ? `yt-dlp -x --format mp3 -o ${filePath}  ${url}` : 
-    `yt-dlp -f best -o ${filePath}  ${url}`
+       const command =
+  type === "audio"
+    ? `yt-dlp -x --audio-format mp3 -o "${filePath}" '${url}' `
+    : `yt-dlp -f best -o "${filePath}" '${url}' `;
 
       exec(command,(err,stdout,stderr)=>{
         if(err){
