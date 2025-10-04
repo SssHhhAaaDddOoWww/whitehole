@@ -3,7 +3,7 @@ import engine from '../service/engine.js';
 import fs from "fs"
   import { Router } from 'express';
   const download = Router();
-  download.post("/download" , async(req,res)=>{
+  download.post("/" , async(req,res)=>{
     try { 
         const {url ,type} = req.body;
         if ( !url || !type ){
