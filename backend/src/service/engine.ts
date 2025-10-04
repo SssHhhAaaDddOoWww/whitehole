@@ -16,7 +16,7 @@ export default  function engine(url:string,type:Type){
        const command =
   type === "audio"
     ? `yt-dlp -x --audio-format mp3 -o "${filePath}" '${url}' `
-    : `yt-dlp -f best -o "${filePath}" '${url}' `;
+    : `yt-dlp -f  bestvideo+bestaudio --merge-output-format mp4 --recode-video mp4 -o "${filePath}" '${url}' `;
 
       exec(command,(err,stdout,stderr)=>{
         if(err){
